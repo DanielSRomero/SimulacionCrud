@@ -2,8 +2,6 @@ package com.example.srodenas.simulacioncrud.Views
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.srodenas.simulacioncrud.Logic.Client
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity(), OperationsInterface {
         myButtonAdd = findViewById(R.id.myButtonAdd)   //Recuperamos la referencia en memoria del botón de la interfaz.
         myButtonUpdate = findViewById(R.id.myButtomEdit)
         myButtonDel = findViewById(R.id.myButtomDel)
-        myDialog = Dialog(controller)
+        myDialog = Dialog()
 
         myDialog.setListener(this) //Le paso mi referencia como objeto que estoy obligado a implementar los tres métodos.
 
@@ -68,8 +66,8 @@ class MainActivity : AppCompatActivity(), OperationsInterface {
     }
 
 
-    override fun ClientAdd(id: Int, name: String){
-        val newClient = Client (id, name)
+    override fun ClientAdd(id: Int, name: String, apellido : String, telefono : String){
+        val newClient = Client (id, name, apellido, telefono)
         controller.ClientAddController(newClient)
         var msg =  "El cliente con id = $id, ha sido insertado correctamente"
 
@@ -93,14 +91,14 @@ class MainActivity : AppCompatActivity(), OperationsInterface {
 
 
 
-    override fun ClientUpdate(id: Int, name: String) {
+    override fun ClientUpdate(id: Int, name: String, apellido: String, telefono: String) {
         var msg = ""
-        val update = controller.ClientUpdateController(id, name)  //borramos el 2.
+        val update = controller.ClientUpdateController(id, name, apellido, telefono)  //cambiamos un cliente
 
         if (update)
-            msg =  "El cliente con id = $id, ha sido eliminado correctamente"
+            msg =  "El cliente con id = $id, ha sido actualizado correctamente"
         else
-            msg = "El cliente con id = $id, no ha sido encontrado para eliminar"
+            msg = "El cliente con id = $id, no ha sido encontrado para actualizar"
 
         Log. d(TAG, msg)
         showConsoleData(msg)

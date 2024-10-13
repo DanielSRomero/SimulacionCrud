@@ -6,13 +6,13 @@ import com.example.srodenas.simulacioncrud.Logic.Client
 class RepositoryClient {
 
     companion object {  //Sólo puedo tener un companion object por clase.
-        var primary = 100
+        var primary = 0
 
         val arrayClient : List<Client> = listOf (
-            Client (RepositoryClient.incrementPrimary(), "Santi"),
-            Client (RepositoryClient.incrementPrimary(), "Sonia"),
-            Client (RepositoryClient.incrementPrimary(), "Guille"),
-            Client (RepositoryClient.incrementPrimary(), "Diego")
+            Client (RepositoryClient.incrementPrimary(), "Santi", "Rodenas", "123456"),
+            Client (RepositoryClient.incrementPrimary(), "Daniel", "Romero", "789012"),
+            Client (RepositoryClient.incrementPrimary(), "David", "Muñoz", "345678"),
+            Client (RepositoryClient.incrementPrimary(), "Alejandro", "Copado", "901234")
         )
 
         fun incrementPrimary() = primary ++ //devuelvo la clave e incremento.

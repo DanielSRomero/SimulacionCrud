@@ -17,10 +17,12 @@ class Controller () {
     fun ClientDelController (id : Int) : Boolean  = myListClient.removeAll { it.id == id }
 
 
-    fun ClientUpdateController (id : Int, name : String): Boolean {
+    fun ClientUpdateController (id: Int, name: String, apellido: String, telefono: String): Boolean {
         val findClient : Client? = myListClient.find { it.id == id }
         return findClient?.let{
             it.name = name
+            it.apellido = apellido
+            it.telefono = telefono
             true
         }?:false
     }
